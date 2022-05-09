@@ -1,6 +1,6 @@
 package com.api.contacts.dto;
 
-import com.api.contacts.entites.Contacts;
+import com.api.contacts.entites.Contact;
 import org.jetbrains.annotations.NotNull;
 
 import javax.validation.constraints.Email;
@@ -9,7 +9,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
-public class ContactsDTO implements Serializable {
+public class ContactDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private final Long id;
@@ -26,7 +26,7 @@ public class ContactsDTO implements Serializable {
     @NotEmpty(message = "Campo obrigatório")
     private final String telephone;
 
-    public ContactsDTO(Long id, String name, String lastName, String cpf, String email, String telephone) {
+    public ContactDTO(Long id, String name, String lastName, String cpf, String email, String telephone) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -35,7 +35,7 @@ public class ContactsDTO implements Serializable {
         this.telephone = telephone;
     }
 
-    public ContactsDTO(@NotNull Contacts entity){
+    public ContactDTO(@NotNull Contact entity){
         this.id = entity.getId();
         this.name = entity.getName();
         this.lastName = entity.getName();

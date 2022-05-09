@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "contacts")
-public class Contacts implements Serializable {
+public class Contact implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -26,10 +26,10 @@ public class Contacts implements Serializable {
 
     private String telephone;
 
-    public Contacts() {
+    public Contact() {
     }
 
-    public Contacts(Long id, String name, String lastName, String cpf, String email, String telephone) {
+    public Contact(Long id, String name, String lastName, String cpf, String email, String telephone) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
