@@ -38,7 +38,7 @@ public class ContactDTO implements Serializable {
 	public ContactDTO(@NotNull Contact entity) {
 		this.id = entity.getId();
 		this.name = entity.getName();
-		this.lastName = entity.getName();
+		this.lastName = entity.getLastName();
 		this.cpf = entity.getCpf();
 		this.email = entity.getEmail();
 		this.telephone = entity.getTelephone();
