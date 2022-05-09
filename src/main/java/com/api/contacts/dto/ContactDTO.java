@@ -12,19 +12,19 @@ import java.io.Serializable;
 public class ContactDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private final Long id;
+	private Long id;
 
 	@NotEmpty(message = "Campo obrigatório")
 	@Size(min = 3, message = "Nome minímo de 3 carácter")
-	private final String name;
+	private String name;
 	@NotEmpty(message = "Campo obrigatório")
-	private final String lastName;
+	private String lastName;
 	@Pattern(regexp = "(^\\d{3}\\x2E\\d{3}\\x2E\\d{3}\\x2D\\d{2}$)")
-	private final String cpf;
+	private String cpf;
 	@Email(message = "favor entrar com email válido")
-	private final String email;
+	private String email;
 	@NotEmpty(message = "Campo obrigatório")
-	private final String telephone;
+	private String telephone;
 
 	public ContactDTO(Long id, String name, String lastName, String cpf, String email, String telephone) {
 		this.id = id;
@@ -48,24 +48,48 @@ public class ContactDTO implements Serializable {
 		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getLastName() {
 		return lastName;
 	}
 
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	public String getCpf() {
 		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getTelephone() {
 		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
 
 }
