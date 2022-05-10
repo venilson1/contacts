@@ -112,7 +112,7 @@ link para baixar a imagem: https://hub.docker.com/repository/docker/venilson/con
     "lastName": "exemplo",
     "cpf": "000.000.000-00",
     "email": "nome@gmail.com",
-    "telephone": "011956000000"
+    "phone": "011956000000"
 }
 
 ```
@@ -125,7 +125,7 @@ link para baixar a imagem: https://hub.docker.com/repository/docker/venilson/con
     "lastName": "exemplo",
     "cpf": "000.000.000-00",
     "email": "nome@gmail.com",
-    "telephone": "011956000000"
+    "phone": "011956000000"
 }
 ```
 
