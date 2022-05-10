@@ -1,5 +1,6 @@
 package com.api.contacts.resources.exceptions;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.Instant;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,5 +45,19 @@ public class ResourcesExceptionsHandler {
 	    }
 
 	    return ResponseEntity.status(status).body(err);
+	  }
+	  
+	  @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+	  public ResponseEntity<StandardError> entityNotFound(SQLIntegrityConstraintViolationException e, HttpServletRequest request) {
+		    HttpStatus status = HttpStatus.UNPROCESSABLE_ENTITY;
+		    ValidationError err = new ValidationError();
+		    err.setTimestamp(Instant.now());
+		    err.setStatus(status.value());
+		    err.setError("Resource not found");
+		    err.setMessage(e.getMessage());
+		    err.setPath(request.getRequestURI());
+		    
+
+		    return ResponseEntity.status(status).body(err);
 	  }
 }

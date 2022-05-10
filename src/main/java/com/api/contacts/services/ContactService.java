@@ -32,7 +32,7 @@ public class ContactService {
 	@Transactional(readOnly = true)
 	public ContactDTO findById(Long id) {
 		Optional<Contact> obj = repository.findById(id);
-		Contact entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity Not Found")); //500
+		Contact entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity Not Found")); // 500
 		return new ContactDTO(entity);
 	}
 
@@ -42,14 +42,6 @@ public class ContactService {
 		copyDtoToEntity(dto, entity);
 		entity = repository.save(entity);
 		return new ContactDTO(entity);
-	}
-
-	private void copyDtoToEntity(ContactDTO dto, Contact entity) {
-		entity.setName(dto.getName());
-		entity.setLastName(dto.getLastName());
-		entity.setCpf(dto.getCpf());
-		entity.setEmail(dto.getEmail());
-		entity.setTelephone(dto.getTelephone());
 	}
 
 	@Transactional
@@ -63,13 +55,21 @@ public class ContactService {
 			throw new ResourceNotFoundException("Id Not Found " + id);
 		}
 	}
-	
-	  public void delete(Long id) {
-		    try {
-		      repository.deleteById(id);
-		    } catch (EmptyResultDataAccessException e) {
-		      throw new ResourceNotFoundException("Id Not Found " + id);
-		    } 
-		  }
+
+	public void delete(Long id) {
+		try {
+			repository.deleteById(id);
+		} catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException("Id Not Found " + id);
+		}
+	}
+
+	private void copyDtoToEntity(ContactDTO dto, Contact entity) {
+		entity.setName(dto.getName());
+		entity.setLastName(dto.getLastName());
+		entity.setCpf(dto.getCpf());
+		entity.setEmail(dto.getEmail());
+		entity.setPhone(dto.getPhone());
+	}
 
 }

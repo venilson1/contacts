@@ -1,7 +1,14 @@
 package com.api.contacts.entites;
 
-import javax.persistence.*;
 import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_contact")
@@ -22,18 +29,18 @@ public class Contact implements Serializable {
 	@Column(unique = true)
 	private String email;
 
-	private String telephone;
+	private String phone;
 
 	public Contact() {
 	}
 
-	public Contact(Long id, String name, String lastName, String cpf, String email, String telephone) {
+	public Contact(Long id, String name, String lastName, String cpf, String email, String phone) {
 		this.id = id;
 		this.name = name;
 		this.lastName = lastName;
 		this.cpf = cpf;
 		this.email = email;
-		this.telephone = telephone;
+		this.phone = phone;
 	}
 
 	public Long getId() {
@@ -76,11 +83,11 @@ public class Contact implements Serializable {
 		this.email = email;
 	}
 
-	public String getTelephone() {
-		return telephone;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 }
