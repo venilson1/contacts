@@ -36,7 +36,6 @@ public class ContactService {
 		return new ContactDTO(entity);
 	}
 
-	@Transactional(readOnly = true)
 	public ContactDTO insert(ContactDTO dto) {
 		Contact entity = new Contact();
 		copyDtoToEntity(dto, entity);

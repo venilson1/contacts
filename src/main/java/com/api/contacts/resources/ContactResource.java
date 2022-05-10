@@ -24,38 +24,38 @@ import com.api.contacts.services.ContactService;
 @RequestMapping(value = "/contatos")
 public class ContactResource {
 
-    @Autowired
-    private ContactService service;
+	@Autowired
+	private ContactService service;
 
-    @GetMapping
-    public ResponseEntity<List<ContactDTO>> findAll(){
-        List<ContactDTO> contacts = service.findAll();
-        return ResponseEntity.ok().body(contacts);
-    }
-    
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<ContactDTO> findById(@PathVariable Long id) {
-      ContactDTO dto = service.findById(id);
-      return ResponseEntity.ok().body(dto);
-    }
-    
-    @PostMapping
-    public ResponseEntity<ContactDTO> insert(@Valid @RequestBody ContactDTO dto){
-    	dto = service.insert(dto);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
-        return ResponseEntity.created(uri).body(dto);
-    }
-    
-    @PutMapping(value = "/{id}")
-    public ResponseEntity<ContactDTO> update(@PathVariable Long id, @Valid @RequestBody ContactDTO dto){
-        dto = service.update(id, dto);
-        return ResponseEntity.ok().body(dto);
-    }
-    
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-      service.delete(id);
-      return ResponseEntity.noContent().build();
-    }
+	@GetMapping
+	public ResponseEntity<List<ContactDTO>> findAll() {
+		List<ContactDTO> contacts = service.findAll();
+		return ResponseEntity.ok().body(contacts);
+	}
+
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<ContactDTO> findById(@PathVariable Long id) {
+		ContactDTO dto = service.findById(id);
+		return ResponseEntity.ok().body(dto);
+	}
+
+	@PostMapping
+	public ResponseEntity<ContactDTO> insert(@Valid @RequestBody ContactDTO dto) {
+		dto = service.insert(dto);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
+		return ResponseEntity.created(uri).body(dto);
+	}
+
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<ContactDTO> update(@PathVariable Long id, @Valid @RequestBody ContactDTO dto) {
+		dto = service.update(id, dto);
+		return ResponseEntity.ok().body(dto);
+	}
+
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
+		service.delete(id);
+		return ResponseEntity.noContent().build();
+	}
 
 }
