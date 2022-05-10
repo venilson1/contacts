@@ -19,7 +19,7 @@ public class ContactDTO implements Serializable {
 	private String name;
 	@NotEmpty(message = "Campo obrigatório")
 	private String lastName;
-	@Pattern(regexp = "(^\\d{3}\\x2E\\d{3}\\x2E\\d{3}\\x2D\\d{2}$)")
+	@Pattern(regexp = "(^\\d{3}\\x2E\\d{3}\\x2E\\d{3}\\x2D\\d{2}$)", message = "CPF deve possuir o padrão 000.000.000-00")
 	private String cpf;
 	@Email(message = "favor entrar com email válido")
 	private String email;
