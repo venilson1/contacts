@@ -1,7 +1,7 @@
 /*
 
   CREATE TABLE tb_contact (
-	id  bigserial not null, 
+	id  bigserial NOT NULL, 
 	name varchar(255), 
 	last_name varchar(255), 
 	cpf varchar(255),
@@ -9,6 +9,11 @@
 	phone varchar(255), 
 	primary key (id));
 
+	    alter table tb_contact 
+       add constraint UK_24e33tvi63kxcudkfsqowdyta unique (cpf);
+
+				alter table tb_contact 
+       add constraint UK_116mypn7oe42006jof6oq9x0t unique (email);
 */
 
 INSERT INTO tb_contact (name, last_name, cpf, email, phone) VALUES ('Bob', 'Brown', '235.588.965-56', 'bob@gmail.com', '011959058945');
