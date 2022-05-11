@@ -23,8 +23,8 @@ public class ContactService {
 	private ContactRepository repository;
 
 	@Transactional(readOnly = true)
-	public List<ContactDTO> findAll() {
-		List<Contact> contacts = repository.findAll();
+	public List<ContactDTO> find(String name) {
+		List<Contact> contacts = repository.find(name);
 		List<ContactDTO> contactsDTO = contacts.stream().map(el -> new ContactDTO(el)).collect(Collectors.toList());
 		return contactsDTO;
 	}
@@ -37,10 +37,12 @@ public class ContactService {
 	}
 
 	public ContactDTO insert(ContactDTO dto) {
+
 		Contact entity = new Contact();
 		copyDtoToEntity(dto, entity);
 		entity = repository.save(entity);
 		return new ContactDTO(entity);
+
 	}
 
 	@Transactional
